@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "ad8bcdda-6d38-4e01-824c-4d1774385023",
+		"name": "Pokemons",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25338187"
+	},
+	"item": [
+		{
+			"name": "Pokemon created",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "trainer-token",
+						"value": "12e205d718c3537ecdd4f2b161c8cbd4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Noora\",\r\n  \"photo\": \"https://www.pngplay.com/wp-content/uploads/11/Haunter-Pokemon-PNG-Photos.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://pokemonbattle.me:5000/pokemons?{{pokemon}}",
+					"protocol": "https",
+					"host": [
+						"pokemonbattle",
+						"me"
+					],
+					"port": "5000",
+					"path": [
+						"pokemons"
+					],
+					"query": [
+						{
+							"key": "{{pokemon}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add pokeball",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.replaceIn('{{$Ash}}')"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "trainer_token",
+						"value": "12e205d718c3537ecdd4f2b161c8cbd4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pokemon_id\": 5123\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://pokemonbattle.me:5000/trainers/add_pokeball",
+					"protocol": "https",
+					"host": [
+						"pokemonbattle",
+						"me"
+					],
+					"port": "5000",
+					"path": [
+						"trainers",
+						"add_pokeball"
+					],
+					"query": [
+						{
+							"key": "pokemon_id",
+							"value": "5081",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Battle",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "trainer_token",
+						"value": "'12e205d718c3537ecdd4f2b161c8cbd4'",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"attacking_pokemon\": \"5034\",\r\n    \"defending_pokemon\": \"5079\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://pokemonbattle.me:5000/pokemons?in_pokeball=1",
+					"protocol": "https",
+					"host": [
+						"pokemonbattle",
+						"me"
+					],
+					"port": "5000",
+					"path": [
+						"pokemons"
+					],
+					"query": [
+						{
+							"key": "in_pokeball",
+							"value": "1"
+						},
+						{
+							"key": "pokemon_id",
+							"value": "3703",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all pokemons",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokemonbattle.me:5000/pokemons",
+					"protocol": "https",
+					"host": [
+						"pokemonbattle",
+						"me"
+					],
+					"port": "5000",
+					"path": [
+						"pokemons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemons",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "trainer_token",
+						"value": "12e205d718c3537ecdd4f2b161c8cbd4",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pokemon_id\": \"5034\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://pokemonbattle.me:5000/trainers/delete_pokeball",
+					"protocol": "https",
+					"host": [
+						"pokemonbattle",
+						"me"
+					],
+					"port": "5000",
+					"path": [
+						"trainers",
+						"delete_pokeball"
+					],
+					"query": [
+						{
+							"key": "pokemon_id",
+							"value": "5081",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "pokemon",
+			"value": "id=5081",
+			"type": "string"
+		},
+		{
+			"key": "pm",
+			"value": "https://pokemonbattle.me:5000/",
+			"type": "string"
+		}
+	]
+}
